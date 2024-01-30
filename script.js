@@ -39,7 +39,7 @@ function shuffle(items) {
  */
 
 function createCards(colors) {
-  const gameBoard = document.getElementById("game");
+  const gameBoard = document.querySelector("#game");
 
   for (let color of colors) {
     // missing code here ...

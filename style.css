@@ -38,6 +38,11 @@ html, body {
 
 #game {
   background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+#game div {
   border: 1px solid black;
   width: 100px;
   height: 100px;
