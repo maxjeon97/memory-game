@@ -22,7 +22,7 @@ html, body {
   top: 30%;
 }
 
-.start-button {
+#startbutton {
   align-self: center;
   align-items: center;
   border-radius: 20px;
@@ -39,7 +39,10 @@ html, body {
 #game {
   background-color: white;
   height: 100%;
-  width: 100%;
+  width: 700px;
+  padding-top: 200px;
+  margin: auto;
+  align-items: center;
 }
 
 #game div {
@@ -48,4 +51,16 @@ html, body {
   height: 100px;
   margin: 20px;
   display: inline-block;
+}
+
+#resetbutton {
+  position: relative;
+  top: 30px;
+  left: 46%;
+  display: block;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 8px;
+  color: rgb(238, 247, 248);
+  background-color: rgb(20, 83, 134);
 }

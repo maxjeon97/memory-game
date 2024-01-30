@@ -1,17 +1,20 @@
 "use strict";
 
 /** Memory game: find matching pairs of cards and flip both of them. */
-
 const FOUND_MATCH_WAIT_MSECS = 1000;
 const COLORS = [
-  "red", "blue", "green", "orange", "purple",
-  "red", "blue", "green", "orange", "purple",
+  "red", "blue", "green", "orange", "purple", "yellow",
+  "red", "blue", "green", "orange", "purple", "yellow",
 ];
-
 const colors = shuffle(COLORS);
-
-createCards(colors);
-
+const startButton = document.querySelector("#startbutton");
+let startButtonClicked = false;
+startButton.addEventListener("click", function() {
+  if(startButtonClicked == false) {
+    startButtonClicked = true;
+    createCards(colors);
+  }
+});
 
 /** Shuffle array items in-place and return shuffled array. */
 
@@ -40,26 +43,70 @@ function shuffle(items) {
 
 function createCards(colors) {
   const gameBoard = document.querySelector("#game");
-
   for (let color of colors) {
-    // missing code here ...
+    let temp = document.createElement("div");
+    temp.className = color;
+    temp.addEventListener("click", function() {
+      handleCardClick(temp);
+    });
+    gameBoard.appendChild(temp);
+  }
+  const resetButton = document.createElement("button");
+  resetButton.innerHTML = "Reset";
+  resetButton.id = "resetbutton";
+  gameBoard.appendChild(resetButton);
+  resetButton.addEventListener("click", function() {
+    removeAllChildNodes(gameBoard);
+    const newColors = shuffle(colors);
+    createCards(newColors);
+  });
+}
+
+function removeAllChildNodes(parent) {
+  while(parent.firstChild) {
+      parent.removeChild(parent.firstChild);
   }
 }
 
 /** Flip a card face-up. */
 
 function flipCard(card) {
-  // ... you need to write this ...
+  card.style.backgroundColor = card.className;
 }
 
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-  // ... you need to write this ...
+  card.style.backgroundColor = "white";
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
+let card1 = undefined;
+let card2 = undefined;
+let cardIsFlipped = false;
+let stopFlip = false;
 function handleCardClick(evt) {
-  // ... you need to write this ...
+  if(stopFlip == true) {
+    return;
+  }
+  else {
+    if(cardIsFlipped == false) {
+      card1 = evt;
+      flipCard(card1);
+      cardIsFlipped = true;
+      return;
+    }
+    else {
+      card2 = evt;
+      flipCard(card2);
+      stopFlip = true;
+      checkMatch(card1, card2);
+      return;
+    }
+  }
+}
+
+function checkMatch(card1, card2) {
+
 }
