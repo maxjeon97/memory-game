@@ -7,6 +7,7 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple", "yellow",
 ];
 const colors = shuffle(COLORS);
+
 const startButton = document.querySelector("#startbutton");
 let startButtonClicked = false;
 startButton.addEventListener("click", function() {
@@ -51,18 +52,19 @@ function createCards(colors) {
     });
     gameBoard.appendChild(temp);
   }
+
   const resetButton = document.createElement("button");
   resetButton.innerHTML = "Reset";
   resetButton.id = "resetbutton";
   gameBoard.appendChild(resetButton);
   resetButton.addEventListener("click", function() {
-    removeAllChildNodes(gameBoard);
+    removeAllChildren(gameBoard);
     const newColors = shuffle(colors);
     createCards(newColors);
   });
 }
 
-function removeAllChildNodes(parent) {
+function removeAllChildren(parent) {
   while(parent.firstChild) {
       parent.removeChild(parent.firstChild);
   }

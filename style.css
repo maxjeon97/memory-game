@@ -8,7 +8,7 @@ html, body {
 }
 
 .home {
-  background-color: rgb(36, 34, 34);
+  background-color: rgb(59, 56, 56);
   height: 100%;
   width: 100%;
 }
@@ -37,7 +37,7 @@ html, body {
 }
 
 #game {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   height: 100%;
   width: 700px;
   padding-top: 200px;
