@@ -100,6 +100,9 @@ function handleCardClick(evt) {
       return;
     }
     else {
+      if(card1 == evt) {
+        return;
+      }
       card2 = evt;
       flipCard(card2);
       stopFlip = true;
@@ -110,5 +113,20 @@ function handleCardClick(evt) {
 }
 
 function checkMatch(card1, card2) {
-
+  if(card1.className == card2.className) {
+    card1.style.pointerevents = "none";
+    card2.style.pointerevents = "none";
+    cardIsFlipped = false;
+    stopFlip = false;
+    return;
+  }
+  else {
+    setTimeout(function() {
+      unFlipCard(card1);
+      unFlipCard(card2);
+      cardIsFlipped = false;
+      stopFlip = false;
+    }, FOUND_MATCH_WAIT_MSECS);
+    return;
+  }
 }
